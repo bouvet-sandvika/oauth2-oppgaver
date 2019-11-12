@@ -368,4 +368,134 @@ Star applikasjonene ```oauth2-authorization-server``` og ```oauth2-spring-client
 
 Prøv å naviger til ```http://localhost:9393/hentBackendData```. Du skal få error -> unauthorized.
 
-#### 2.0 
+### Oppgave 2 - Legge til user og client properties støtte
+Det kan være veldig nyttig å kunne lese inn user og client konfigurasjon via properties i ```application.yaml``` fromfor å hardkode klienten i koden.
+
+I prosjektet ```oauth2-authorization-server``` opprett tre nye pojo klasser i pakken ```no.bouvet.sandvika.oauth2.authorization.properties```.
+```java
+package no.bouvet.sandvika.oauth2.authorization.properties;
+
+import lombok.*;
+
+import java.util.Set;
+
+import static java.util.Collections.emptySet;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@EqualsAndHashCode
+@ToString(exclude = "secret")
+public class ClientProperties {
+
+    private String clientId;
+    private String secret;
+    @Builder.Default
+    private Set<String> grantTypes = emptySet();
+    @Builder.Default
+    private Set<String> scopes = emptySet();
+    @Builder.Default
+    private Set<String> redirectUris = emptySet();
+}
+```
+```java
+package no.bouvet.sandvika.oauth2.authorization.properties;
+
+import lombok.*;
+
+import java.util.Set;
+
+import static java.util.Collections.emptySet;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@EqualsAndHashCode
+@ToString(exclude = "password")
+public class UserProperties {
+
+    private String username;
+    private String password;
+    @Builder.Default
+    private Set<String> authorities = emptySet();
+}
+```
+```java
+package no.bouvet.sandvika.oauth2.authorization.properties;
+
+import lombok.*;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+import java.util.List;
+
+import static java.util.Collections.emptyList;
+
+@ConfigurationProperties("bouvet.authorization")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@EqualsAndHashCode
+@ToString
+public class AuthorizationProperties {
+
+    @Builder.Default
+    private List<UserProperties> users = emptyList();
+    @Builder.Default
+    private List<ClientProperties> clients = emptyList();
+}
+```
+
+Legg til ``AuthorizationProperties`` i ```@EnableConfigurationProperties```.
+
+Endre properties i ```application.yaml```
+```yaml
+bouvet:
+  authorization:
+    users:
+      - username: oauth2-user
+        password: user-password
+        authorities:
+          - ROLE_USER
+      - username: oauth2-admin
+        password: admin-password
+        authorities:
+          - ROLE_USER
+          - ROLE_ADMIN
+    clients:
+      - client-id: oauth2-client
+        secret: client-password
+        grant-types:
+          - authorization_code
+        scopes:
+          - read
+        redirect-uris:
+          - http://localhost:9292/login
+```
+
+Nå, i ```AuthorizationServerConfig``` gjør om ```ClientDetailsServiceConfigurer``` til å benytte properties fra ```application.yaml```. Koden burde bli noe liknende metoden under. 
+
+```java
+@Override
+public void configure(ClientDetailsServiceConfigurer clientDetailsServiceConfigurer) throws Exception {
+    InMemoryClientDetailsServiceBuilder clientDetailsServiceBuilder = clientDetailsServiceConfigurer.inMemory();
+
+    clientPropertiesList.forEach(clientProperties -> clientDetailsServiceBuilder
+        .withClient(clientProperties.getClientId())
+            .secret(clientProperties.getSecret())
+            .authorizedGrantTypes(clientProperties.getGrantTypes().toArray(new String[0]))
+            .scopes(clientProperties.getScopes().toArray(new String[0]))
+            .redirectUris(clientProperties.getRedirectUris().toArray(new String[0]))
+            .accessTokenValiditySeconds(sessionTimeout)
+            .autoApprove(true));
+}
+```
+
+Start opp ```oauth2-authorization-server``` og test ut klienten fra oppgave 1.7.
+
+### Oppgave 3 - Benytt asymmetriske nøkler for signering av access token
