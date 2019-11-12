@@ -174,11 +174,11 @@ Request client authentication på /oauth/authorize. Bruker er ikke logget inn og
 ```curl
 curl -i -c cookies.txt "http://localhost:9191/as/oauth/authorize" -d "response_type=code&client_id=oauth2-client"
 ```
-Bruker må logge inn med form login
+Bruker må logge inn med form login. Hvis autentiseringen er vellykket så returnerer serveren 302 til /oauth/authorize
 ```curl
 curl -i -b cookies.txt -c cookies.txt "http://localhost:9191/as/login" -d "username=oauth2-user&password=user-password"
 ```
-Klient kaller /oauth/authorize igjen (med cookie jsessionid). Server responderer med en access code 
+Bruker kaller /oauth/authorize igjen (med cookie jsessionid). Server responderer med en access code 
 ```curl
 code=$(curl -si -b cookies.txt "http://localhost:9191/as/oauth/authorize" -d "redirect_uri=http://localhost:9292/login" | ggrep -oP 'Location:.*code=\K\w+')
 ```
@@ -256,7 +256,7 @@ Hints:
 * konfigurer jwt.key-value i application.yaml
 * benytt @EnableResourceServer
 * benytt @EnableGlobalMethodSecurity
-* bneytt @RolesAllowed i rest service
+* benytt @RolesAllowed i rest service
 
 #### 1.5 Spring client
 Konfigurer ```oauth2-spring-client``` fra oppgave 0 til å benytte den nye ```oauth2-authorization-server```. Husk at klienten må vite om jwt.key-value.
