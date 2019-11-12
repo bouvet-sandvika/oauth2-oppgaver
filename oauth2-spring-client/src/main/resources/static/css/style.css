@@ -1,0 +1,75 @@
+
+body {
+    width: 50%;
+    margin: 0 auto;
+    font-family: OpenSans-Regular, sans-serif;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+#overskrift {
+    padding-left: 10px;
+}
+.userInfoTable tr th,
+.userInfoTable tr td {
+    text-align: left;
+    padding: 0 30px 0 30px
+}
+
+table.userInfoTable {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    border-collapse: collapse;
+    border-radius: 10px;
+    border-style: hidden; /* hide standard table (collapsed) border */
+    box-shadow: 0 0 0 1px #666; /* this draws the table border  */
+}
+
+.userInfoTable .row.header {
+    height: 60px;
+    color: white;
+    font-size: 18px;
+}
+
+.userInfoTable .row.data {
+    height: 50px;
+}
+
+.userInfoTable .row.data.expired {
+    color: grey;
+}
+
+.userInfoTable .row.header .cell {
+    background: #36304a;
+}
+
+.userInfoTable .row:nth-child(odd) {
+    background: #f5f5f5;
+}
+
+.userInfoTable .cell.index, .userInfoTable .cell.viewToken {
+    min-width: 0;
+}
+
+.userInfoTable .cell {
+    padding-left: 30px;
+    font-size: 16px;
+}
+
+.userInfoTable .cell:last-child {
+    padding-right: 20px;
+}
+
+.userInfoTable .cell.authorities, .userInfoTable .cell.scopes, .userInfoTable .cell.viewToken {
+    text-align: right;
+}
+
+.userInfoTable .row.data .cell.expiration {
+    white-space: nowrap;
+}
+
+.userInfoTable .row.data .cell {
+    font-family: monospace;
+}

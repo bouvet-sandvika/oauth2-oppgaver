@@ -1,0 +1,9 @@
+server:
+  port: 9191
+  servlet:
+    context-path: /as
+
+#logging:
+#  level:
+#    org.springframework: DEBUG
+#    no.bouvet.sandvika.oauth2: TRACE

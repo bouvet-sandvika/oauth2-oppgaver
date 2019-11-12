@@ -1,0 +1,186 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://bouvet-sandvika.no/root.json",
+  "type": "object",
+  "required": [
+    "login",
+    "id",
+    "node_id",
+    "avatar_url",
+    "gravatar_id",
+    "url",
+    "html_url",
+    "followers_url",
+    "following_url",
+    "gists_url",
+    "starred_url",
+    "subscriptions_url",
+    "organizations_url",
+    "repos_url",
+    "events_url",
+    "received_events_url",
+    "type",
+    "site_admin",
+    "name",
+    "company",
+    "blog",
+    "location",
+    "email",
+    "hireable",
+    "bio",
+    "public_repos",
+    "public_gists",
+    "followers",
+    "following",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "login": {
+      "$id": "#/properties/login",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "id": {
+      "$id": "#/properties/id",
+      "type": "integer"
+    },
+    "node_id": {
+      "$id": "#/properties/node_id",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "avatar_url": {
+      "$id": "#/properties/avatar_url",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "gravatar_id": {
+      "$id": "#/properties/gravatar_id",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "url": {
+      "$id": "#/properties/url",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "html_url": {
+      "$id": "#/properties/html_url",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "followers_url": {
+      "$id": "#/properties/followers_url",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "following_url": {
+      "$id": "#/properties/following_url",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "gists_url": {
+      "$id": "#/properties/gists_url",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "starred_url": {
+      "$id": "#/properties/starred_url",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "subscriptions_url": {
+      "$id": "#/properties/subscriptions_url",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "organizations_url": {
+      "$id": "#/properties/organizations_url",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "repos_url": {
+      "$id": "#/properties/repos_url",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "events_url": {
+      "$id": "#/properties/events_url",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "received_events_url": {
+      "$id": "#/properties/received_events_url",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "type": {
+      "$id": "#/properties/type",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "site_admin": {
+      "$id": "#/properties/site_admin",
+      "type": "boolean"
+    },
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "company": {
+      "$id": "#/properties/company",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "blog": {
+      "$id": "#/properties/blog",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "location": {
+      "$id": "#/properties/location",
+      "type": "null"
+    },
+    "email": {
+      "$id": "#/properties/email",
+      "type": "null"
+    },
+    "hireable": {
+      "$id": "#/properties/hireable",
+      "type": "null"
+    },
+    "bio": {
+      "$id": "#/properties/bio",
+      "type": "null"
+    },
+    "public_repos": {
+      "$id": "#/properties/public_repos",
+      "type": "integer"
+    },
+    "public_gists": {
+      "$id": "#/properties/public_gists",
+      "type": "integer"
+    },
+    "followers": {
+      "$id": "#/properties/followers",
+      "type": "integer"
+    },
+    "following": {
+      "$id": "#/properties/following",
+      "type": "integer"
+    },
+    "created_at": {
+      "$id": "#/properties/created_at",
+      "type": "string",
+      "pattern": "^(.*)$"
+    },
+    "updated_at": {
+      "$id": "#/properties/updated_at",
+      "type": "string",
+      "pattern": "^(.*)$"
+    }
+  }
+}

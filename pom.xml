@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.8.RELEASE</version>
+    </parent>
+
+    <groupId>no.bouvet.sandvika.oauth2.poc</groupId>
+    <artifactId>oauth2-oppgaver-poc</artifactId>
+    <version>local</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <spring-security-oauth2.version>2.3.6.RELEASE</spring-security-oauth2.version>
+        <spring-security-oauth2-autoconfigure.version>2.1.7.RELEASE</spring-security-oauth2-autoconfigure.version>
+        <spring-security-jwt.version>1.0.10.RELEASE</spring-security-jwt.version>
+        <jsonschema2pojo.version>0.4.29</jsonschema2pojo.version>
+        <commons-lang.version>2.4</commons-lang.version>
+    </properties>
+
+    <modules>
+        <module>oauth2-authorization-server</module>
+        <module>oauth2-spring-client</module>
+        <module>oauth2-resource-server</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.security.oauth.boot</groupId>
+                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+                <version>${spring-security-oauth2-autoconfigure.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>${spring-security-oauth2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-jwt</artifactId>
+                <version>${spring-security-jwt.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.jsonschema2pojo</groupId>
+                    <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+                    <version>${jsonschema2pojo.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>oauth2-oppgaver-poc</artifactId>
+        <groupId>no.bouvet.sandvika.oauth2.poc</groupId>
+        <version>local</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>oauth2-spring-client</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.security.oauth.boot</groupId>
+            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jsonschema2pojo</groupId>
+                <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+                <configuration>
+                    <sourceType>jsonschema</sourceType>
+                    <outputEncoding>${project.build.sourceEncoding}</outputEncoding>
+                    <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
+                    <annotationStyle>jackson2</annotationStyle>
+                    <generateBuilders>true</generateBuilders>
+                    <initializeCollections>true</initializeCollections>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-web</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <targetPackage>no.bouvet.sandvika.oauth2</targetPackage>
+                            <sourcePaths>
+                                <sourcePath>
+                                    ${basedir}/src/main/resources/github-user-info.json
+                                </sourcePath>
+                            </sourcePaths>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
