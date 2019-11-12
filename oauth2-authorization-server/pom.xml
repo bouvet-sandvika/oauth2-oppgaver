@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>no.bouvet.sandvika.oauth2.poc</groupId>
-        <artifactId>oauth2-oppgaver-poc</artifactId>
+        <artifactId>oauth2-oppgaver</artifactId>
         <version>local</version>
     </parent>
 
