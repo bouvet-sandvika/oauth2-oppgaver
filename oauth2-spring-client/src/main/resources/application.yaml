@@ -1,2 +1,7 @@
 server:
-  port: 9191
+  port: 9292
+
+logging:
+  level:
+    org.springframework: DEBUG
+    no.bouvet.sandvika.oauth2: TRACE

@@ -3,7 +3,7 @@ server:
   servlet:
     context-path: /as
 
-#logging:
-#  level:
-#    org.springframework: DEBUG
-#    no.bouvet.sandvika.oauth2: TRACE
+logging:
+  level:
+    org.springframework: DEBUG
+    no.bouvet.sandvika.oauth2: TRACE
