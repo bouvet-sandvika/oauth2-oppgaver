@@ -88,7 +88,7 @@ Start opp auth serveren slik at den kjører på port 9191.
 
 #### 1.1 Test med curl
 ```curl
-curl oauth2-client:client-password@localhost:9191/oauth/token -dgrant_type=client_credentials -dscope=any
+curl oauth2-client:client-password@localhost:9191/as/oauth/token -dgrant_type=client_credentials -dscope=any
 ```
 
 Skal gi response:
