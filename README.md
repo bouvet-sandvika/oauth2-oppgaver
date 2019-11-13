@@ -331,7 +331,7 @@ public class UserInfoDto {
 }
 ```
 
-Endre ```UserInfoRestService``` fra oppgave 0 til å returnere ```UserInfoRestService```.
+Endre ```UserInfoRestService``` fra oppgave 0 til å returnere ```UserInfoDto```.
 ```java
 package no.bouvet.sandvika.oauth2.rest;
 
@@ -448,7 +448,7 @@ Star applikasjonene ```oauth2-authorization-server``` og ```oauth2-spring-client
 
 Gå til siden ```http://localhost:9292```. Logg inn med oauth2-user og user-password. Du skal nå få opp en User Info html side.
 
-Gå til siden ```http://localhost:9292/data``` for å hente data fra ressursserver via klient, ressursserver svarer med en enkel infoside.
+Gå til siden ```http://localhost:9292/user``` for å hente data fra ressursserver via klient, ressursserver svarer med en enkel infoside.
 
 Prøv å aksessere ```http://localhost:9393/hentBackendData``` direkte. Du skal få error -> unauthorized, da det kun er klient som kjenner tokenet.
 
