@@ -163,7 +163,8 @@ Opprett en ny spring config klasse med navn ```AuthorizationServerConfig``` i sa
 | clientId | oauth2-client | 
 | secret | client-password | 
 | authorizedGrantTypes | authorization_code | 
-| accessTokenUri | https://github.com/login/oauth/access_token | 
+| accessTokenUri | http://localhost:9191/as/oauth/token |
+| userAuthorizationUri | http://localhost:9191/as/oauth/authorize |
 | scope | read | 
 | redirectUris | http://localhost:9292/login | 
 | autoApprove | true |
